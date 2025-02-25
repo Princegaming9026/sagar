@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-top nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.header-top .logo {
+    font-size: 24px;
+    font-weight: bold;
+    background: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.header-bottom h1 {
+    font-size: 36px;
+    margin: 20px 0;
+}
+
+.header-bottom p {
+    font-size: 18px;
+}
+
+footer {
+    background: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.icon img {
+    margin-bottom: 10px;
+}
+
+.icon span {
+    font-size: 14px;
+}
