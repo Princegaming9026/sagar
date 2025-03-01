@@ -125,11 +125,11 @@ body {
 
 .hamburger-menu {
     position: relative;
-    display: none; /* Hidden by default on desktop */
+    display: flex; /* Hidden by default on desktop */
 }
 
 .dropdown-content {
-    display: none;
+    display: flex;
     position: absolute;
     right: 0;
     top: 100%;
