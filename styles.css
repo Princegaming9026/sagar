@@ -254,21 +254,3 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-    .hero-section {
-        margin: 1rem;
-        padding: 2rem 1rem;
-    }
-    
-    .quote-main {
-        font-size: 1.8rem;
-    }
-    
-    .quote-sub {
-        font-size: 1.2rem;
-    }
-    
-    .hidden-content {
-        width: 95%;
-    }
-}
