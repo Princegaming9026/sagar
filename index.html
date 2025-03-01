@@ -10,25 +10,23 @@
 <body>
     <header class="header">
         <div class="logo">BUHELP</div>
-        <div class="nav-container">
-            <nav class="nav-links">
-                <a href="#home" class="nav-item active">Home</a>
-                <!-- अन्य लिंक JavaScript द्वारा जोड़े जाएंगे -->
-            </nav>
-            <div class="hamburger-menu">
-                <div class="hamburger-icon">☰</div>
-                <div class="dropdown-content"></div>
+        
+        <!-- Main Navigation -->
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item active">Home</a>
+            <!-- Dynamic links will be added here by JavaScript -->
+        </nav>
+        
+        <!-- Hamburger Menu -->
+        <div class="hamburger-menu">
+            <div class="hamburger-icon">☰</div>
+            <div class="dropdown-content">
+                <!-- Static dropdown items -->
+                <a href="privacy.html" class="dropdown-item">Privacy Policy</a>
+                <a href="terms.html" class="dropdown-item">Terms & Conditions</a>
             </div>
         </div>
     </header>
-
-    <main id="content">
-        <div class="page active" id="home">Home Content</div>
-        <div class="page" id="about">About Us Content</div>
-        <div class="page" id="contact">Contact Us Content</div>
-        <div class="page" id="privacy">Privacy Policy</div>
-        <div class="page" id="terms">Terms & Conditions</div>
-    </main>
 
     <script src="script.js"></script>
 </body>
