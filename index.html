@@ -4,33 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUHELP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Splash Screen -->
+    <div class="splash-screen">
+        <div class="splash-text">www.buhelp.wuaze.com</div>
+    </div>
+
+    <!-- Header -->
     <header class="header">
         <div class="logo">BUHELP</div>
         
-        <!-- Main Navigation -->
-        <nav class="nav-links">
-            <a href="index.html" class="nav-item active">Home</a>
-            <!-- Dynamic links will be added here by JavaScript -->
-        </nav>
-        
-        <!-- Hamburger Menu -->
-        <div class="hamburger-menu">
-            <div class="hamburger-icon">☰</div>
-            <div class="dropdown-content">
-                <div class="dropdown-section">
-                    <!-- Dynamic links will be added here -->
-                </div>
-                <div class="static-links">
-                    <a href="privacy.html" class="dropdown-item">Privacy Policy</a>
-                    <a href="terms.html" class="dropdown-item">Terms & Conditions</a>
+        <nav class="nav-container">
+            <div class="nav-links">
+                <a href="#" class="nav-link home">Home</a>
+                <a href="#" class="nav-link desktop-only">About Us</a>
+                <a href="#" class="nav-link desktop-only">Contact Us</a>
+                <div class="hamburger-menu">
+                    <div class="hamburger-icon">☰</div>
+                    <div class="dropdown-content">
+                        <a href="#" class="nav-link mobile-only">About Us</a>
+                        <a href="#" class="nav-link mobile-only">Contact Us</a>
+                        <a href="#" class="nav-link">Privacy Policy</a>
+                        <a href="#" class="nav-link">Terms & Conditions</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </nav>
     </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Add your main content here -->
+    </main>
 
     <script src="script.js"></script>
 </body>
