@@ -22,3 +22,20 @@ window.addEventListener('resize', () => {
         hamburgerMenu.classList.remove('active');
     }
 });
+
+// More Button Functionality
+const moreBtn = document.querySelector('.more-btn');
+const hiddenContent = document.querySelector('.hidden-content');
+
+moreBtn.addEventListener('click', () => {
+    hiddenContent.classList.toggle('active');
+});
+
+// Optional: Show on hover
+moreBtn.addEventListener('mouseenter', () => {
+    hiddenContent.classList.add('active');
+});
+
+moreBtn.addEventListener('mouseleave', () => {
+    hiddenContent.classList.remove('active');
+});
