@@ -143,7 +143,13 @@ body {
         display: none;
     }
     
-    .hamburger-icon {
-        display: none;
+@media (max-width: 1024px) {
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
     }
 }
