@@ -1,37 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const navItems = [
-        { id: 'home', text: 'Home' },
-        { id: 'about', text: 'About Us' },
-        { id: 'contact', text: 'Contact Us' },
-        { id: 'privacy', text: 'Privacy Policy' },
-        { id: 'terms', text: 'Terms & Conditions' }
+    const dynamicLinks = [
+        { url: 'about.html', text: 'About Us' },
+        { url: 'contact.html', text: 'Contact Us' }
     ];
 
-    const header = document.querySelector('.header');
     const navLinks = document.querySelector('.nav-links');
     const hamburgerDropdown = document.querySelector('.dropdown-content');
-    const pages = document.querySelectorAll('.page');
-    
-    // Initialize navigation
-    function initNavigation() {
-        // Clear existing items
-        navLinks.innerHTML = '';
-        hamburgerDropdown.innerHTML = '';
+    const hamburgerIcon = document.querySelector('.hamburger-icon');
 
-        // Create all nav items
-        navItems.forEach(item => {
-            const link = document.createElement('a');
-            link.href = `#${item.id}`;
-            link.className = 'nav-item';
-            link.textContent = item.text;
-            link.dataset.target = item.id;
-            
-            if(item.id === 'home') {
-                link.classList.add('active');
-                navLinks.appendChild(link);
-            } else {
-                hamburgerDropdown.appendChild(link);
-            }
+    // Initialize dynamic navigation
+    function initNavigation() {
+        // Add dynamic links to navigation
+        dynamicLinks.forEach(link => {
+            const navItem = document.createElement('a');
+            navItem.href = link.url;
+            navItem.className = 'nav-item';
+            navItem.textContent = link.text;
+            navLinks.appendChild(navItem);
         });
 
         adjustNavigation();
@@ -39,58 +24,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Responsive navigation adjustment
     function adjustNavigation() {
-        const headerWidth = header.offsetWidth;
+        const header = document.querySelector('.header');
         const logoWidth = document.querySelector('.logo').offsetWidth;
-        const hamburgerWidth = document.querySelector('.hamburger-menu').offsetWidth;
-        const availableSpace = headerWidth - logoWidth - hamburgerWidth - 80; // 80px for padding
+        const availableSpace = header.offsetWidth - logoWidth - 120; // 120px for hamburger and padding
 
         let usedSpace = 0;
         const itemsToMove = [];
         
         Array.from(navLinks.children).forEach((item, index) => {
-            if(index === 0) return; // Skip Home item
+            if(index === 0) return; // Skip Home button
             usedSpace += item.offsetWidth;
         });
 
-        Array.from(hamburgerDropdown.children).reverse().forEach(item => {
-            const itemWidth = item.offsetWidth;
-            if(usedSpace + itemWidth < availableSpace) {
-                usedSpace += itemWidth;
+        // Check which items need to move to dropdown
+        dynamicLinks.forEach((link, index) => {
+            const item = navLinks.children[index + 1]; // +1 to skip Home button
+            if(usedSpace > availableSpace) {
                 itemsToMove.push(item);
+                usedSpace -= item.offsetWidth;
             }
         });
 
-        itemsToMove.forEach(item => {
-            hamburgerDropdown.removeChild(item);
-            navLinks.insertBefore(item, navLinks.lastElementChild);
+        // Move items to dropdown
+        itemsToMove.reverse().forEach(item => {
+            navLinks.removeChild(item);
+            hamburgerDropdown.insertBefore(item, hamburgerDropdown.firstChild);
         });
-    }
 
-    // Page switching logic
-    function switchPage(targetId) {
-        pages.forEach(page => {
-            page.classList.remove('active');
-            if(page.id === targetId) page.classList.add('active');
-        });
-        
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.classList.remove('active');
-            if(item.dataset.target === targetId) item.classList.add('active');
-        });
+        // Always show hamburger menu
+        document.querySelector('.hamburger-menu').style.display = 'flex';
     }
 
     // Event listeners
     window.addEventListener('resize', adjustNavigation);
-    
+    hamburgerIcon.addEventListener('click', function(e) {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+    });
+
     document.addEventListener('click', function(e) {
-        if(e.target.closest('.nav-item')) {
-            e.preventDefault();
-            const targetId = e.target.dataset.target;
-            switchPage(targetId);
+        if(!e.target.closest('.nav-links') && !e.target.closest('.hamburger-menu')) {
+            navLinks.classList.remove('active');
         }
     });
 
     // Initial setup
     initNavigation();
-    switchPage('home');
 });
