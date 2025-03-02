@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUHELP</title>
+    <title>BUHELP - Official Portal</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Splash Screen -->
@@ -16,7 +16,6 @@
     <!-- Header -->
     <header class="header">
         <div class="logo">BUHELP</div>
-        
         <nav class="nav-container">
             <div class="nav-links">
                 <a href="#" class="nav-link home">Home</a>
@@ -35,19 +34,181 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main class="main-content">
-        <!-- Add your main content here -->
+        <!-- Hero Section -->
         <section class="hero-section">
-    <div class="content-box">
-        <h1 class="quote-main">"BuHelp: Connecting You with the Support You Need"</h1>
-        <p class="quote-sub">"Discover personalized advice and resources tailored just for you."</p>
-        <button class="more-btn">More</button>
-        <div class="hidden-content">
-            <p class="hidden-text">"At BuHelp, we understand that everyone faces unique challenges. Our mission is to connect you with expert guidance, practical solutions, and a supportive community. Whether you're looking for advice, resources, or a place to share your experiences, we are here to help you every step of the way."</p>
-        </div>
-    </div>
-</section>
+            <div class="content-box">
+                <h1 class="quote-main">"BuHelp: Connecting You with the Support You Need"</h1>
+                <p class="quote-sub">"Discover personalized advice and resources tailored just for you."</p>
+                <button class="more-btn">More</button>
+                <div class="hidden-content">
+                    <p class="hidden-text">"At BuHelp, we understand that everyone faces unique challenges. Our mission is to connect you with expert guidance, practical solutions, and a supportive community. Whether you're looking for advice, resources, or a place to share your experiences, we are here to help you every step of the way."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Links Section -->
+        <section class="quick-links-section animate-on-scroll">
+            <div class="quick-links-container">
+                <button class="section-link" data-section="admission">Admission</button>
+                <button class="section-link" data-section="result">Result</button>
+                <button class="section-link" data-section="enrollment">Enrolment/BAR</button>
+                <button class="section-link" data-section="student-services">Student Services</button>
+                <button class="section-link" data-section="examination">Examination</button>
+                <button class="section-link" data-section="news">Latest News</button>
+            </div>
+        </section>
+
+        <!-- Admission Section -->
+        <section id="admission" class="content-section animate-on-scroll">
+            <h2 class="section-heading">Admission</h2>
+            <div class="cards-container">
+                <div class="content-card">
+                    <h3 class="card-heading">Campus Courses Admission</h3>
+                    <p class="card-subtext">Course of Entrance, Direct Admission Test and PHD</p>
+                    <div class="button-group">
+                        <a href="https://admission.bujhansi.ac.in/Documents/CampusCoursesFee202425.pdf" class="content-btn">Check Courses</a>
+                        <a href="https://admission.bujhansi.ac.in/CampusLogin.aspx?isCollege=0" class="content-btn">Apply Now</a>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3 class="card-heading">College Professional Courses</h3>
+                    <p class="card-subtext">B.Sc.(B.Ed), B.A.(B.Ed), B.Ed(JEE), B.B.A., B.C.A, etc.</p>
+                    <a href="https://admission.bujhansi.ac.in/CampusLogin.aspx?isCollege=1" class="content-btn">Apply Now</a>
+                </div>
+
+                <div class="content-card">
+                    <h3 class="card-heading">College Online Admission</h3>
+                    <p class="card-subtext">B.A., B.Com, M.A. and M.Com courses</p>
+                    <div class="button-group">
+                        <a href="https://admission.bujhansi.ac.in/Default.aspx" class="content-btn">Apply Now</a>
+                        <a href="https://admission.bujhansi.ac.in/Student/frmViewColConfirmList.aspx" class="content-btn">Admitted Students</a>
+                        <a href="https://admission.bujhansi.ac.in/Student/frmViewColAdmissionList.aspx" class="content-btn">Applied Students</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Result Section -->
+        <section id="result" class="content-section animate-on-scroll">
+            <h2 class="section-heading">Result</h2>
+            <div class="cards-container">
+                <div class="content-card">
+                    <h3 class="card-heading">Current Medical Result</h3>
+                    <a href="https://exam.bujhansi.ac.in/frmViewMedicalResult.aspx?cd=MwA3ADUA" class="content-btn">View Result</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Past Year Medical Result</h3>
+                    <a href="https://exam.bujhansi.ac.in/frmViewMedicalResult_Archive.aspx?cd=MwA3ADYA" class="content-btn">View Archive</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Current Campus Result</h3>
+                    <a href="https://exam.bujhansi.ac.in/frmViewCampusCurrentResult.aspx?cd=MwA3ADkA" class="content-btn">View Result</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Past Campus Result</h3>
+                    <a href="https://exam.bujhansi.ac.in/frmViewCampusResult.aspx?cd=MwA4ADAA" class="content-btn">View Archive</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Current College Result</h3>
+                    <a href="https://exam.bujhansi.ac.in/viewcurrentresult.aspx?cd=MwA3ADcA" class="content-btn">View Result</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Past College Result</h3>
+                    <a href="https://exam.bujhansi.ac.in/viewresult.aspx?cd=MwA3ADgA" class="content-btn">View Archive</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Current NEP Result</h3>
+                    <a href="https://exam.bujhansi.ac.in/frmViewCurrentCollegeResult.aspx" class="content-btn">View Result</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Past NEP Result</h3>
+                    <a href="https://exam.bujhansi.ac.in/frmViewCollegeResult.aspx" class="content-btn">View Archive</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enrolment Section -->
+        <section id="enrollment" class="content-section animate-on-scroll">
+            <h2 class="section-heading">Enrolment/BAR Registration</h2>
+            <div class="cards-container">
+                <div class="content-card">
+                    <h3 class="card-heading">Generate/Update BAR ID</h3>
+                    <p class="card-subtext">Traditional/Campus/Professional Courses</p>
+                    <a href="https://admission.bujhansi.ac.in/Registration/Reg/IntermediatePage" class="content-btn">Register Now</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Registered Student Login</h3>
+                    <a href="https://admission.bujhansi.ac.in/Registration/Reg/Login" class="content-btn">Login Here</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Re-Payment/Download BAR Documents</h3>
+                    <a href="https://admission.bujhansi.ac.in/Registration/Reg/RePayment" class="content-btn">Download</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Digilocker Registration Guide</h3>
+                    <a href="https://www.youtube.com/watch?v=Gw3DUHaJg1c" class="content-btn">View Guide</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Services Section -->
+        <section id="student-services" class="content-section animate-on-scroll">
+            <h2 class="section-heading">Student Services</h2>
+            <div class="cards-container">
+                <div class="content-card">
+                    <h3 class="card-heading">Student Login Portal</h3>
+                    <a href="https://academics.bujhansi.ac.in/Student/frmStudentLogin.aspx" class="content-btn">Login Here</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">National Service Scheme</h3>
+                    <a href="https://nss.bujhansi.ac.in/" class="content-btn">View Portal</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">University Library</h3>
+                    <a href="library.html" class="content-btn">Access Library</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examination Section -->
+        <section id="examination" class="content-section animate-on-scroll">
+            <h2 class="section-heading">Examination</h2>
+            <div class="cards-container">
+                <div class="content-card">
+                    <h3 class="card-heading">Exam Form Updates</h3>
+                    <a href="https://exam.bujhansi.ac.in/?cd=NAA3ADMA" class="content-btn">View Updates</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Exam Time Tables</h3>
+                    <a href="time.html" class="content-btn">View Time Table</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Top Student Lists</h3>
+                    <a href="https://ums.bujhansi.ac.in/BUJhansi/frmToperList.aspx?cd=MwA4ADIA" class="content-btn">View List</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Medical Top Students</h3>
+                    <a href="https://ums.bujhansi.ac.in/BUJhansi/frmToperListMedical.aspx?cd=MwA4ADMA" class="content-btn">View List</a>
+                </div>
+                <div class="content-card">
+                    <h3 class="card-heading">Answer Booklet & Grievances</h3>
+                    <a href="https://reevaluation.bujhansi.ac.in/" class="content-btn">Access Portal</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest News Section -->
+        <section id="news" class="content-section animate-on-scroll">
+            <div class="cards-container">
+                <div class="content-card">
+                    <h3 class="card-heading" style="color: #ff4444;">Join Us on WhatsApp</h3>
+                    <p class="card-subtext">Get instant updates and notifications</p>
+                    <a href="https://whatsapp.com/channel/0029Va4e4tNLtOjInm7GCQ0z" class="content-btn">Join Channel</a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
