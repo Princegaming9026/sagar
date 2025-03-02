@@ -1,29 +1,52 @@
-/* Header Dropdown Fix */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #0F172A;
+    color: white;
+}
+
+/* Header Fixes */
+.header {
+    background: #000;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
     right: 0;
-    top: 100%; /* नया जोड़ा गया */
+    top: 100%;
     background: #000;
     border: 2px solid yellow;
     border-radius: 8px;
     padding: 1rem;
-    z-index: 1000; /* Z-index बढ़ाया */
+    z-index: 1001;
     min-width: 200px;
 }
 
-/* Hero Section Animation */
-.content-box {
-    text-align: center;
-    overflow: hidden;
-}
-
+/* Hero Animation Fixes */
 .quote-main {
     animation: slideFromLeft 1s ease-out;
+    text-align: center;
+    margin: 2rem 0;
 }
 
 .quote-sub {
     animation: slideFromLeft 1s ease-out 0.3s forwards;
+    text-align: center;
+    margin-bottom: 2rem;
+    opacity: 0;
 }
 
 @keyframes slideFromLeft {
@@ -37,16 +60,17 @@
     }
 }
 
-/* More Button Styles */
+/* More Button Fixes */
 .more-btn {
     background: transparent;
     border: 2px solid white;
     color: white;
     padding: 1rem 3rem;
     border-radius: 30px;
+    cursor: pointer;
     transition: all 0.3s ease;
-    margin: 2rem auto;
     display: block;
+    margin: 2rem auto;
 }
 
 .more-btn:hover {
@@ -54,7 +78,6 @@
     border-color: #2563EB;
 }
 
-/* Hidden Content Box */
 .hidden-content {
     max-height: 0;
     overflow: hidden;
@@ -63,6 +86,7 @@
     border-radius: 15px;
     margin: 1rem auto;
     width: 80%;
+    text-align: center;
 }
 
 .hidden-content.active {
@@ -75,19 +99,15 @@
     opacity: 0;
     transform: translateX(-50px);
     transition: all 0.6s ease;
+    background: #1A1A2E;
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 1rem;
 }
 
 .content-card.visible {
     opacity: 1;
     transform: translateX(0);
-}
-
-/* Responsive Grid Layout */
-.cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
 }
 
 /* Standard Button Styles */
@@ -109,11 +129,14 @@
     border-color: #2563EB;
 }
 
-/* Mobile Responsive */
+/* Mobile Responsive Fixes */
 @media (max-width: 768px) {
-    .hero-section {
-        padding: 2rem 1rem;
-        margin: 1rem;
+    .desktop-only {
+        display: none !important;
+    }
+    
+    .hamburger-icon {
+        display: block !important;
     }
     
     .hidden-content {
@@ -124,12 +147,11 @@
         grid-template-columns: 1fr;
     }
     
-    .nav-links {
-        gap: 0.5rem;
+    .quote-main {
+        font-size: 1.8rem;
     }
     
-    .nav-link {
-        padding: 0.5rem;
-        font-size: 0.9rem;
+    .quote-sub {
+        font-size: 1.2rem;
     }
 }
