@@ -1,76 +1,55 @@
-// Splash Screen
-setTimeout(() => {
-    document.querySelector('.splash-screen').style.display = 'none';
-}, 2500);
+document.addEventListener('DOMContentLoaded', () => {
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger-menu');
+    const navContainer = document.querySelector('.nav-container');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
 
-// Hamburger Menu
-const hamburgerMenu = document.querySelector('.hamburger-menu');
-hamburgerMenu.addEventListener('click', () => {
-    hamburgerMenu.classList.toggle('active');
-});
+    hamburger.addEventListener('click', () => {
+        navContainer.classList.toggle('active');
+        dropdownMenu.style.display = navContainer.classList.contains('active') ? 'block' : 'none';
+    });
 
-// More Button
-const moreBtn = document.querySelector('.more-btn');
-const hiddenContent = document.querySelector('.hidden-content');
-moreBtn.addEventListener('click', () => {
-    hiddenContent.classList.toggle('active');
-});
+    // More Button Interaction
+    const moreButton = document.querySelector('.more-button');
+    const infoBox = document.querySelector('.info-box');
 
+    moreButton.addEventListener('click', () => {
+        infoBox.style.display = infoBox.style.display === 'none' ? 'block' : 'none';
+    });
 
+    // Scroll Animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
 
-// Section Navigation
-document.querySelectorAll('.section-link').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const sectionId = this.dataset.section;
-        document.getElementById(sectionId).scrollIntoView({
-            behavior: 'smooth'
+    document.querySelectorAll('.appear-animation').forEach((element) => {
+        observer.observe(element);
+    });
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
-});
 
-
-document.addEventListener('click', (e) => {
-    if (!hamburgerMenu.contains(e.target)) {
-        hamburgerMenu.classList.remove('active');
-    }
-});
-
-// Scroll Animations
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.content-card').forEach(card => {
-    observer.observe(card);
-});
-
-// More Button Functionality
-const moreBtn = document.querySelector('.more-btn');
-const hiddenContent = document.querySelector('.hidden-content');
-moreBtn.addEventListener('click', () => {
-    hiddenContent.classList.toggle('active');
-    moreBtn.classList.toggle('active');
-});
-
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+    // Button Hover Effects
+    document.querySelectorAll('.nav-button, .section-button').forEach(button => {
+        button.addEventListener('mouseover', () => {
+            button.style.backgroundColor = 'blue';
+            button.style.borderColor = 'blue';
         });
-    });
-});
-// Button Hover Effects
-document.querySelectorAll('.content-btn').forEach(btn => {
-    btn.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.05)';
-    });
-    btn.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1)';
+        button.addEventListener('mouseout', () => {
+            button.style.backgroundColor = 'transparent';
+            button.style.borderColor = 'yellow';
+        });
     });
 });
