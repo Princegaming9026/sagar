@@ -6,152 +6,246 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: #0F172A;
+    background: #0a0a0a;
     color: white;
 }
 
-/* Header Fixes */
-.header {
-    background: #000;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
+/* Loader */
+.loader {
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: maskOut 0.5s 2s forwards;
     z-index: 1000;
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    background: #000;
-    border: 2px solid yellow;
-    border-radius: 8px;
-    padding: 1rem;
-    z-index: 1001;
-    min-width: 200px;
+.loader-text {
+    font-family: 'DM Sans', sans-serif;
+    color: white;
+    font-size: 2rem;
+    animation: maskIn 1s forwards;
 }
 
-/* Hero Animation Fixes */
-.quote-main {
-    animation: slideFromLeft 1s ease-out;
+/* Header */
+header {
+    background: black;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    color: white;
+    animation: slideIn 1s ease-out;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-button {
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid yellow;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background: blue;
+    border-color: blue;
+}
+
+.hamburger-menu {
+    display: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: black;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin: 0.5rem 0;
+}
+
+/* Hero Section */
+.hero {
+    margin-top: 100px;
+    padding: 2rem;
+}
+
+.hero-box {
+    background: #1a1a1a;
+    border-radius: 20px;
+    padding: 2rem;
     text-align: center;
+}
+
+.more-button {
+    background: white;
+    color: black;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 30px;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.info-box {
+    display: none;
+    background: #2a2a2a;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border-radius: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hamburger-menu {
+        display: block;
+    }
+    
+    .nav-container.active .dropdown-menu {
+        display: block;
+    }
+}
+
+/* Animations */
+@keyframes maskIn {
+    from { clip-path: inset(0 100% 0 0); }
+    to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes maskOut {
+    from { clip-path: inset(0 0 0 0); }
+    to { clip-path: inset(0 0 0 100%); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+.appear-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: appear 1s ease-out forwards;
+}
+
+@keyframes appear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section Styles */
+.section-box {
+    background: #1a1a1a;
+    border-radius: 20px;
+    padding: 2rem;
     margin: 2rem 0;
 }
 
-.quote-sub {
-    animation: slideFromLeft 1s ease-out 0.3s forwards;
-    text-align: center;
-    margin-bottom: 2rem;
-    opacity: 0;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
-@keyframes slideFromLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* More Button Fixes */
-.more-btn {
+.section-button {
     background: transparent;
     border: 2px solid white;
     color: white;
-    padding: 1rem 3rem;
-    border-radius: 30px;
+    padding: 1rem;
+    border-radius: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: block;
-    margin: 2rem auto;
 }
 
-.more-btn:hover {
-    background: #2563EB;
-    border-color: #2563EB;
+.section-button:hover {
+    background: blue;
+    border-color: blue;
 }
 
-.hidden-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.5s ease;
-    background: rgba(255,255,255,0.1);
-    border-radius: 15px;
-    margin: 1rem auto;
-    width: 80%;
+/* Additional Styles */
+.red-text {
+    color: #ff4444;
+}
+
+.green-text {
+    color: #12E165;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.news-box {
     text-align: center;
-}
-
-.hidden-content.active {
-    max-height: 500px;
     padding: 2rem;
-}
-
-/* Section Cards Animation */
-.content-card {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all 0.6s ease;
-    background: #1A1A2E;
-    padding: 2rem;
+    background: #2a2a2a;
     border-radius: 15px;
-    margin: 1rem;
+    margin-top: 1rem;
 }
 
-.content-card.visible {
-    opacity: 1;
-    transform: translateX(0);
+.news-button {
+    background: #12E165;
+    color: black;
+    font-weight: bold;
+    margin-top: 1.5rem;
 }
 
-/* Standard Button Styles */
-.content-btn {
-    background: transparent;
-    border: 2px solid white;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s ease;
-    margin: 0.5rem;
+.grid-item {
+    background: #2a2a2a;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid #3a3a3a;
 }
 
-.content-btn:hover,
-.content-btn:active {
-    background: #2563EB;
-    border-color: #2563EB;
-}
-
-/* Mobile Responsive Fixes */
-@media (max-width: 768px) {
-    .desktop-only {
-        display: none !important;
-    }
-    
-    .hamburger-icon {
-        display: block !important;
-    }
-    
-    .hidden-content {
-        width: 95%;
-    }
-    
-    .cards-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .quote-main {
-        font-size: 1.8rem;
-    }
-    
-    .quote-sub {
-        font-size: 1.2rem;
-    }
+.section-heading {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2rem;
 }
