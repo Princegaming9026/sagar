@@ -29,6 +29,14 @@ const hiddenContent = document.querySelector('.hidden-content');
 
 moreBtn.addEventListener('click', () => {
     hiddenContent.classList.toggle('active');
+if(window.innerWidth <= 768 && hiddenContent.classList.contains('active')) {
+        setTimeout(() => {
+            hiddenContent.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }, 300);
+    }
 });
 
 // Optional: Show on hover
