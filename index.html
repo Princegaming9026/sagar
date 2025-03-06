@@ -1,55 +1,401 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUHELP</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        @keyframes mask-in {
+            from { clip-path: inset(50%); }
+            to { clip-path: inset(0); }
+        }
+        @keyframes mask-out {
+            from { clip-path: inset(0); }
+            to { clip-path: inset(50%); }
+        }
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .mask-in {
+            animation: mask-in 1s ease-in-out forwards;
+        }
+        .mask-out {
+            animation: mask-out 1s ease-in-out forwards;
+        }
+        .appear {
+            animation: appear 1s ease-in-out forwards;
+        }
+        header {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 2em;
+            font-weight: 900;
+            font-style: italic;
+            animation: slide-in 1s ease-in-out forwards;
+        }
+        @keyframes slide-in {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        .nav-button {
+            background-color: black;
+            color: white;
+            border: 2px solid yellow;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            margin: 0 5px;
+        }
+        .nav-button:hover {
+            background-color: blue;
+        }
+        .nav-button.yellow {
+            background-color: yellow;
+            color: black;
+        }
+        .menu-toggle {
+            cursor: pointer;
+            display: none;
+            flex-direction: column;
+        }
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: black;
+            border: 2px solid yellow;
+            border-top: none;
+            min-width: 150px;
+            z-index: 1000;
+        }
+        .dropdown.show {
+            display: block;
+        }
+        .dropdown a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        .dropdown a:hover {
+            background-color: blue;
+        }
+        .hero-box {
+            background-color: #6A1B9A;
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 100px 20px;
+            text-align: center;
+            animation: appear 1s ease-in-out forwards;
+        }
+        .more-button {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid blue;
+            transition: background-color 0.3s;
+        }
+        .more-button:hover {
+            background-color: blue;
+            color: white;
+        }
+        .info-box {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px;
+            text-align: center;
+            animation: appear 1s ease-in-out forwards;
+        }
+        .section-box {
+            background-color: #3F51B5;
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px;
+            text-align: center;
+            animation: appear 1s ease-in-out forwards;
+        }
+        .section-button {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+        .section-button:hover {
+            background-color: purple;
+        }
+        .whatsapp-box {
+            background-color: #FF0000;
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            margin: 20px;
+            text-align: center;
+            animation: appear 1s ease-in-out forwards;
+        }
+        .whatsapp-button {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid blue;
+            transition: background-color 0.3s;
+        }
+        .whatsapp-button:hover {
+            background-color: blue;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            .nav-links {
+                display: none;
+            }
+            .nav-links.show {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: black;
+                width: 100%;
+                text-align: center;
+            }
+            .nav-links.show a {
+                padding: 10px;
+                color: white;
+                text-decoration: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Splash Screen -->
-    <div class="splash-screen">
-        <div class="splash-text">www.buhelp.wuaze.com</div>
+    <div id="mask" class="mask-in" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'DM Sans', sans-serif; font-size: 2em; color: white;">
+        www.buhelp.wuaze.com
     </div>
-
-    <!-- Header -->
-    <header class="header">
+    <header>
         <div class="logo">BUHELP</div>
-        
-        <nav class="nav-container">
-            <div class="nav-links">
-                <a href="#" class="nav-link home">Home</a>
-                <a href="#" class="nav-link desktop-only">About Us</a>
-                <a href="#" class="nav-link desktop-only">Contact Us</a>
-                <div class="hamburger-menu">
-                    <div class="hamburger-icon">☰</div>
-                    <div class="dropdown-content">
-                        <a href="#" class="nav-link mobile-only">About Us</a>
-                        <a href="#" class="nav-link mobile-only">Contact Us</a>
-                        <a href="#" class="nav-link">Privacy Policy</a>
-                        <a href="#" class="nav-link">Terms & Conditions</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <div class="nav-links">
+            <a href="#home" class="nav-button yellow">Home</a>
+            <a href="#about" class="nav-button">About US</a>
+            <a href="#contact" class="nav-button">Contact Us</a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Term & Condition</a>
+        </div>
     </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Add your main content here -->
-        <section class="hero-section">
-    <div class="content-box">
-        <h1 class="quote-main">"BuHelp: Connecting You with the Support You Need"</h1>
-        <p class="quote-sub">"Discover personalized advice and resources tailored just for you."</p>
-        <button class="more-btn">More</button>
-        <div class="hidden-content">
-            <p class="hidden-text">"At BuHelp, we understand that everyone faces unique challenges. Our mission is to connect you with expert guidance, practical solutions, and a supportive community. Whether you're looking for advice, resources, or a place to share your experiences, we are here to help you every step of the way."</p>
+    <div id="content" style="display: none; padding-top: 100px;">
+        <div class="hero-box">
+            <div class="appear">"BuHelp: Connecting You with the Support You Need"</div>
+            <div class="appear" style="color: #12E165;">"Discover personalized advice and resources tailored just for you."</div>
+            <button class="more-button" onclick="showInfo()">More</button>
+            <div id="info-box" class="info-box" style="display: none;">
+                At BuHelp, we understand that everyone faces unique challenges. Our mission is to connect you with expert guidance, practical solutions, and a supportive community. Whether you're looking for advice, resources, or a place to share your experiences, we are here to help you every step of the way.
+            </div>
+        </div>
+        <div class="section-box">
+            <button class="section-button" onclick="scrollToSection('admission')">Admission</button>
+            <button class="section-button" onclick="scrollToSection('result')">Result</button>
+            <button class="section-button" onclick="scrollToSection('enrolment')">Enrolment or BAR Registration/Registered Student Login</button>
+            <button class="section-button" onclick="scrollToSection('student')">Student Login ,NSS, Library</button>
+            <button class="section-button" onclick="scrollToSection('examination')">Examination</button>
+            <button class="section-button" onclick="scrollToSection('news')">Latest news and Announcement</button>
+        </div>
+        <div id="admission" class="section-box">
+            <div class="appear">Admission</div>
+            <div class="section-item">
+                <div class="appear"><strong>Campus Courses Admission</strong></div>
+                <div class="appear">Course of Entrance, Direct Admission Test and PHD</div>
+                <button class="section-button" onclick="window.location.href='https://admission.bujhansi.ac.in/Documents/CampusCoursesFee202425.pdf'">Check courses</button>
+                <button class="section-button" onclick="window.location.href='https://admission.bujhansi.ac.in/CampusLogin.aspx?isCollege=0'">Apply for admission</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>College Professional / B.ED Courses Online Admission</strong></div>
+                <div class="appear">Admission to B.Sc.(B.Ed), B.A.(B.Ed), B.Ed(JEE), B.B.A., B.C.A, B.Sc.(IT), M.Sc.(IT), B.Sc.(CS), M.Sc.(CS)</div>
+                <button class="section-button" onclick="window.location.href='https://admission.bujhansi.ac.in/CampusLogin.aspx?isCollege=1'">Apply for admission</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>College Online Admission</strong></div>
+                <div class="appear">Admission to B.A., B.Com, M.A. and M.Com courses in Affiliated Colleges</div>
+                <button class="section-button" onclick="window.location.href='https://admission.bujhansi.ac.in/Default.aspx'">Apply for admission</button>
+                <button class="section-button" onclick="window.location.href='https://admission.bujhansi.ac.in/Student/frmViewColConfirmList.aspx'">Admited student list</button>
+                <button class="section-button" onclick="window.location.href='https://admission.bujhansi.ac.in/Student/frmViewColAdmissionList.aspx'">Applied student list</button>
+            </div>
+        </div>
+        <div id="result" class="section-box">
+            <div class="appear">Result</div>
+            <div class="section-item">
+                <div class="appear"><strong>Current Medical Result</strong></div>
+                <button class="section-button" onclick="window.location.href='https://exam.bujhansi.ac.in/frmViewMedicalResult.aspx?cd=MwA3ADUA'">View</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Past Year Medical Result</strong></div>
+                <button class="section-button" onclick="window.location.href='https://exam.bujhansi.ac.in/frmViewMedicalResult_Archive.aspx?cd=MwA3ADYA'">View</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Current Campus Result</strong></div>
+                <button class="section-button" onclick="window.location.href='https://exam.bujhansi.ac.in/frmViewCampusCurrentResult.aspx?cd=MwA3ADkA'">View</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Past Year Campus Result</strong></div>
+                <button class="section-button" onclick="window.location.href='https://exam.bujhansi.ac.in/frmViewCampusResult.aspx?cd=MwA4ADAA'">View</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Current college Result</strong></div>
+                <button class="section-button" onclick="window.location.href='https://exam.bujhansi.ac.in/viewcurrentresult.aspx?cd=MwA3ADcA'">View</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Past Year College Result</strong></div>
+                <button class="section-button" onclick="window.location.href='https://exam.bujhansi.ac.in/viewresult.aspx?cd=MwA3ADgA'">View</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Current NEP Result</strong></div>
+                <button class="section-button" onclick="window.location.href='https://exam.bujhansi.ac.in/frmViewCurrentCollegeResult.aspx'">View</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Past Year NEP Result</strong></div>
+                <button class="section-button" onclick="window.location.href='https://exam.bujhansi.ac.in/frmViewCollegeResult.aspx'">View</button>
+            </div>
+        </div>
+        <div id="enrolment" class="section-box">
+            <div class="appear">Enrolment or BAR Registration/Registered Student Login</div>
+            <div class="section-item">
+                <div class="appear"><strong>Generate/Update BAR ID for Traditional Courses,Campus Courses and Prof. Courses, Back Paper, Gap Candidate,</strong></div>
+                <button class="section-button" onclick="window.location.href='https://admission.bujhansi.ac.in/Registration/Reg/IntermediatePage'">Registration</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>registered student login</strong></div>
+                <button class="section-button" onclick="window.location.href='https://admission.bujhansi.ac.in/Registration/Reg/Login'">Login</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Re-Payment / Download Your BAR id Form and Payment Recipt</strong></div>
+                <button class="section-button" onclick="window.location.href='https://admission.bujhansi.ac.in/Registration/Reg/RePayment'">Download</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Digilocker (ABC ID) Registration Steps</strong></div>
+                <button class="section-button" onclick="window.location.href='https://www.youtube.com/watch?v=Gw3DUHaJg1c'">Check</button>
+            </div>
+        </div>
+        <div id="student" class="section-box">
+            <div class="appear">Student Login ,NSS, Library</div>
+            <div class="section-item">
+                <div class="appear"><strong>student login</strong></div>
+                <button class="section-button" onclick="window.location.href='https://academics.bujhansi.ac.in/Student/frmStudentLogin.aspx'">Login</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>National Service Scheme</strong></div>
+                <button class="section-button" onclick="window.location.href='https://nss.bujhansi.ac.in/'">View</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Library</strong></div>
+                <button class="section-button" onclick="window.location.href='library.html'">View</button>
+            </div>
+        </div>
+        <div id="examination" class="section-box">
+            <div class="appear">Examination</div>
+            <div class="section-item">
+                <div class="appear"><strong>Exam form updates</strong></div>
+                <button class="section-button" onclick="window.location.href='https://exam.bujhansi.ac.in/?cd=NAA3ADMA'">View</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Exam Time-Table for Colleges and Campus</strong></div>
+                <button class="section-button" onclick="window.location.href='time.html'">View</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Tentative Top Student List</strong></div>
+                <button class="section-button" onclick="window.location.href='https://ums.bujhansi.ac.in/BUJhansi/frmToperList.aspx?cd=MwA4ADIA'">View</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>Tentative Top Medical Student List</strong></div>
+                <button class="section-button" onclick="window.location.href='https://ums.bujhansi.ac.in/BUJhansi/frmToperListMedical.aspx?cd=MwA4ADMA'">View</button>
+            </div>
+            <div class="section-item">
+                <div class="appear"><strong>View Answer Booklet Online and Apply for Grievances</strong></div>
+                <button class="section-button" onclick="window.location.href='https://reevaluation.bujhansi.ac.in/'">View</button>
+            </div>
+        </div>
+        <div id="news" class="whatsapp-box">
+            <div class="appear"><strong>join us on WhatsApp</strong></div>
+            <button class="whatsapp-button" onclick="window.location.href='https://whatsapp.com/channel/0029Va4e4tNLtOjInm7GCQ0z'">Join</button>
         </div>
     </div>
-</section>
-    </main>
+    <script>
+        setTimeout(() => {
+            document.getElementById('mask').classList.remove('mask-in');
+            document.getElementById('mask').classList.add('mask-out');
+            setTimeout(() => {
+                document.getElementById('mask').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            }, 1000);
+        }, 2000);
 
-    <script src="script.js"></script>
+        function toggleMenu() {
+            const links = document.querySelector('.nav-links');
+            links.classList.toggle('show');
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.classList.remove('show');
+        }
+
+        function toggleDropdown() {
+            const dropdown = document.querySelector('.dropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        function showInfo() {
+            const infoBox = document.getElementById('info-box');
+            infoBox.style.display = infoBox.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 0) {
+                header.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
 </body>
-</html> 
+</html>
